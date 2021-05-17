@@ -244,7 +244,24 @@ client.on('guildMemberRemove',member=>{
             )
        
 })
+//테섭
+client.on('guildMemberAdd',member=>{
+    client.channels.cache.get('843838311634042900').send( 
+        embed = new Discord.MessageEmbed()
+    .setDescription(`<@${member.user.id}>님이 본 서버에 입장하셨습니다`)
+    . setColor('#1de9b6')
+        )
+        
+})
 
+client.on('guildMemberRemove',member=>{
+    client.channels.cache.get('843838311634042900').send(
+        embed = new Discord.MessageEmbed()
+        .setDescription(`<@${member.user.id}>님이 본 서버에서 나가셨습니다.`)
+        . setColor('#f50057')
+            )
+       
+})
 
 client.on('message', (message) => {
     if(message.content === '아야') {
