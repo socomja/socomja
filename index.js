@@ -26,6 +26,21 @@ const searcher = new YTSearcher({
     revealed: true
 });
 
+const sleep = (ms) => {return new Promise(resolve=>{setTimeout(resolve,ms)})}
+client.on('ready', async() => {
+    while(1) {
+      client.user.setActivity("제작자ㅣ자서#8302")
+      await sleep(4000)
+      client.user.setActivity("디스코드ㅣEHbhnz5B4P")
+      await sleep(4000)
+      client.user.setActivity("%도움말")
+      await sleep(4000)
+      client.user.setActivity("[AD]뮤직봇도 많이 이용해주세요~")
+      await sleep(4000)
+      client.user.setActivity("문의는 봇에게 디엠 해주세요")
+      await sleep(4000)
+    } 
+  })
 
  
 
@@ -42,13 +57,7 @@ for (const file of commandFile) {
 
 client.on("error", console.error);
 
-client.on('ready', async () => {
-    client.on('ready', async () => {
-    console.log(`준비`)
-    
-})
-    client.user.setActivity(`${prefix}도움말`)
-});
+
  
 
 
