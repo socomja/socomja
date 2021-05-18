@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const sendError = require("../util/error");
+const {prefix} = require('../config.json')
 
 module.exports = {
   
@@ -20,7 +21,7 @@ module.exports = {
         return sendError(`:참고: 플레이어가 중지되고 대기열이 지워졌습니다..: ${error}`, message.channel);
       }	    
       let xd = new MessageEmbed()
-      .setDescription("이어서 재생하려면 !s를 입력해주세요~")
+      .setDescription(`이어서 재생하려면 ${prefix}스킵을 입력해주세요~`)
       .setColor("YELLOW")
       .setTitle("⏸노래가 일시 정지되었습니다!")
       return message.channel.send(xd);

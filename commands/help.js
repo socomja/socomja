@@ -13,7 +13,7 @@ module.exports = {
 
         const page1 = new Discord.MessageEmbed()
         .setTitle('PAGE 1')
-        .addField(`초대`, 'https://discord.com/api/oauth2/authorize?client_id=805015418149666826&permissions=8&scope=bot')
+        .addField(`초대`, '봇의 초대링크를 생성')
         .addField(`${prefix}킥`, '서버에서 유저를 추방 합니다')
         .addField(`${prefix}벤`, '서버에서 유저를 차단 합니다')
         .addField(`${prefix}청소`, '메시지를 삭제합니다(개발중)')

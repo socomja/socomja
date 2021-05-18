@@ -11,7 +11,7 @@ module.exports=  {
 
         if(!Member) return message.channel.send('해당 유저를 찾을수 없습니다')
 
-        const role = message.guild.roles.cache.find(r => r.name.toLowerCase() === 'muted');
+        const role = message.guild.roles.cache.find(r => r.name.toLowerCase() === '뮤트');
 
         await Member.roles.remove(role)
 

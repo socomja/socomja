@@ -14,7 +14,7 @@ module.exports = {
         const role = message.guild.roles.cache.find(role => role.name.toLowerCase() === 'muted')
         if(!role) {
             try {
-                message.channel.send('해당 뮤트역활을 찾을수 없습니다 다시 설정해주세요.')
+                message.channel.send('해당 뮤트역할을 찾을수 없습니다 다시 설정해주세요.')
 
                 let muterole = await message.guild.roles.create({
                     data : {
@@ -28,7 +28,7 @@ module.exports = {
                         ADD_REACTIONS: false
                     })
                 });
-                message.channel.send('해당 뮤트 역활이 만들어졌습니다.')
+                message.channel.send('해당 뮤트 역할이 만들어졌습니다.')
             } catch (error) {
                 console.log(error)
             }

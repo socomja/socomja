@@ -166,38 +166,7 @@ client.on('message', async(message) => {
     }
 });
 
-client.on('message', async(message) => {
-    if(message.content.startsWith(`${prefix}디엠`)) {
-      const user = message.mentions.users.first() 
-      
-       
-        
-        
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(
-            Embed = new Discord.MessageEmbed()
-        .setTitle("관리자만 사용 가능합니다")
-        .setColor('#ff1744'))
-      
-      
-        try{ 
-        let content = message.content.slice(`${prefix}전송` .length);
-        
-       
-        const embed = new Discord.MessageEmbed()
-        .setTitle("📌 | 디엠도착")
-        .setDescription(content)
-        .addField(`${user.username}님에게 개인메시지가 도착했습니다!`, `전송자 **${message.author.tag}**`)
-        .setFooter(user.tag)
-        .setTimestamp()
-        .setColor('#9B59B6')
-        user.send(embed)
-        message.channel.send("메시지를 전송했습니다.")
-      }catch(err) { 
-        console.log(err)
-        message.reply("오류 발생!")
-      }
-    }
-});
+
 
 
 client.on('message', async (message) => {
@@ -218,59 +187,23 @@ client.on('message', async (message) => {
 
 
 //자서섭
-client.on('guildMemberAdd',member=>{
-    client.channels.cache.get('824260815649374218').send( 
-        embed = new Discord.MessageEmbed()
-    .setDescription(`<@${member.user.id}>님이 본 서버에 입장하셨습니다`)
-    . setColor('#1de9b6')
-        )
-        
-})
+client.on('guildMemberAdd', member => {   //guildMemberRemove
+    const channel_111 = member.guild.systemChannel
+    if (!channel_111) return;
+    const pong_ping = new Discord.MessageEmbed()
+    .setColor('0x0ffff0').setTitle("멤버 입장").setDescription(`새로운 멤버 \n${member}님이 **${member.guild.name}**에 들어오셨어요. \n${member}님, **${member.guild.name}**에 오신것을 환영합니다!`)
+    channel_111.send(pong_ping)
+  });
+  //시스템 체널에 올라옴
+  
+  client.on('guildMemberRemove', member => {   //guildMemberRemove
+    const channel_2222 = member.guild.systemChannel
+    if (!channel_2222) return;
+    const pong_ping1 = new Discord.MessageEmbed()
+    .setColor('0x0fffff').setTitle("멤버 퇴장").setDescription(`퇴장한 멤버 \n${member}님이 **${member.guild.name}**에서 나가셨어요. \n${member}님, 안녕히가세요 ㅠㅠ`)
+    channel_2222.send(pong_ping1)
+  });
 
-client.on('guildMemberRemove',member=>{
-    client.channels.cache.get('842724433625874462').send(
-        embed = new Discord.MessageEmbed()
-        .setDescription(`<@${member.user.id}>님이 본 서버에서 나가셨습니다.`)
-        . setColor('#f50057')
-            )
-       
-})
-//아야섭
-client.on('guildMemberAdd',member=>{
-    client.channels.cache.get('782108127348129836').send( 
-        embed = new Discord.MessageEmbed()
-    .setDescription(`<@${member.user.id}>님이 본 서버에 입장하셨습니다`)
-    . setColor('#1de9b6')
-        )
-        
-})
-
-client.on('guildMemberRemove',member=>{
-    client.channels.cache.get('793387233267941386').send(
-        embed = new Discord.MessageEmbed()
-        .setDescription(`<@${member.user.id}>님이 본 서버에서 나가셨습니다.`)
-        . setColor('#f50057')
-            )
-       
-})
-//테섭
-client.on('guildMemberAdd',member=>{
-    client.channels.cache.get('843838311634042900').send( 
-        embed = new Discord.MessageEmbed()
-    .setDescription(`<@${member.user.id}>님이 본 서버에 입장하셨습니다`)
-    . setColor('#1de9b6')
-        )
-        
-})
-
-client.on('guildMemberRemove',member=>{
-    client.channels.cache.get('843838311634042900').send(
-        embed = new Discord.MessageEmbed()
-        .setDescription(`<@${member.user.id}>님이 본 서버에서 나가셨습니다.`)
-        . setColor('#f50057')
-            )
-       
-})
 
 client.on('message', (message) => {
     if(message.content === '아야') {

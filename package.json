@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@k3rn31p4nic/google-translate-api": "^1.1.1",
     "async_hooks": "^1.0.0",
     "attachment": "0.1.0-rc2",
     "axios": "^0.21.1",
@@ -24,6 +25,7 @@
     "exports": "0.0.1",
     "figlet": "^1.5.0",
     "fs": "0.0.1-security",
+    "google-translate-api": "^2.3.0",
     "lyrics-finder": "^21.7.0",
     "moment-timezone": "^0.5.33",
     "ms": "^2.1.3",
