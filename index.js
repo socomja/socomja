@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { prefix, token, SOUNDCLOUD_CLIENT_ID } = require("./config.json");
+const { prefix, token,  } = require("./config.json");
 
 const { readdirSync } = require('fs');
 const { join } = require('path');
@@ -11,6 +11,7 @@ const { executionAsyncResource } = require('async_hooks');
 const ytdl = require('ytdl-core');
 const bot = new Discord.Client();
 const pagination = require('discord.js-pagination');
+const { Collection, Client } = require("discord.js");
 
 client.commands = new Discord.Collection(); 
 client.queue = new Map();
@@ -18,13 +19,12 @@ client.queue = new Map();
 var ytAudioQueue = [];
 var dispatcher = null;
 
+client.config = {
+    
+    SOUNDCLOUD: process.env.SOUNDCLOUD_CLIENT_ID
+  }
 
-const { YTSearcher } = require('ytsearcher');
- 
-const searcher = new YTSearcher({
-    key: "AIzaSyD2vOjubE8SZ4XtITs-A553UNaZO3yrBQk",
-    revealed: true
-});
+
 
 const sleep = (ms) => {return new Promise(resolve=>{setTimeout(resolve,ms)})}
 client.on('ready', async() => {
