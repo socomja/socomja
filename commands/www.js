@@ -8,8 +8,8 @@ module.exports = {
     async run (client, message, args) {
         setTimeout(()=>{message.delete()},1)
         
-        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('당신은 이명령어를 사용할 권한이 없습니다')
-        if(!message.guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send('권한이 없습니다.')
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('당신은 이명령어를 사용할 권한이 없습니다')
+        if(!message.guild.me.hasPermission("ADMINISTRATOR")) return message.channel.send('권한이 없습니다.')
 
         const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 

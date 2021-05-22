@@ -53,6 +53,9 @@ const commandFile = readdirSync(join(__dirname, "commands")).filter(file => file
 for (const file of commandFile) {
     const command = require(join(__dirname, "commands", `${file}`));
     client.commands.set(command.name, command);
+    let commandName = file.split(".")[0];
+    
+    console.log("로딩완료: "+commandName)
 }
 
 client.on("error", console.error);

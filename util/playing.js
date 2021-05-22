@@ -70,7 +70,7 @@ module.exports = {
         let thing = new MessageEmbed()
                 .setAuthor("지금 재생합니다~", "https://cdn.discordapp.com/attachments/524157791707987976/843691418904297492/Music.gif")
                 .setThumbnail(song.img)
-                .setColor("#18ffff")
+                .setColor("#00e676")
                 .setDescription(`[${song.title}](${song.url})`,true)
                 .addField("재생시간", song.duration, true)
                 .addField("곡 추가 한사람", song.req.tag, true)

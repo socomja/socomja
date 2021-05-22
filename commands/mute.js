@@ -11,7 +11,7 @@ module.exports = {
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('당신은 이 명령을 사용할 권한이 없습니다.')
         const Member = message.mentions.members.first() || message.guild.members.cache.get(args[0])
         if(!Member) return message.channel.send('멤버를 찾을수 없습니다.')
-        const role = message.guild.roles.cache.find(role => role.name.toLowerCase() === 'muted')
+        const role = message.guild.roles.cache.find(role => role.name.toLowerCase() === '뮤트')
         if(!role) {
             try {
                 message.channel.send('해당 뮤트역할을 찾을수 없습니다 다시 설정해주세요.')
