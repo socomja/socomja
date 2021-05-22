@@ -155,7 +155,8 @@ client.on('message', async message => {
 
 client.on('message', async(message) => {
     if(message.content === prefix+'펑') {
-      const embed = new Discord.MessageEmbed()
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('당신은 권한이 없습니다.')
+        const embed = new Discord.MessageEmbed()
       .setDescription("펑!")
       .setImage("https://media.giphy.com/media/HhTXt43pk1I1W/giphy.gif")
       .setColor("RANDOM")
@@ -166,8 +167,66 @@ client.on('message', async(message) => {
     }
 });
 
+client.on('message', message=>{
+    if(message.content === `${prefix}시간`){
+        var today = new Date();   
 
+        var hours = today.getHours(); // 시
+        if( hours < 10 ) {
+            hours = "0" + hours;
+        }
+        var minutes = today.getMinutes();  // 분
+        if( minutes < 10 ) {
+            minutes = "0" + minutes;
+        }
+        var seconds = today.getSeconds();   //초
+        if( seconds < 10 ) {
+            seconds = "0" + seconds;
+        }
+        
+        var nowTime = "" + hours + "시 " + minutes + "분 " + seconds + "초";
+        message.channel.send(`현재 시간: ${nowTime}`)
+    }
+})
 
+client.on("message",  message => {if(message.content == `${prefix}인증`) {
+    message.delete();
+    message.member.roles.add("828879477911191552");
+    let embed = new Discord.MessageEmbed()
+    .setDescription(`${message.author.username}님 인증 완료 되었습니다.`)
+    .setTimestamp()
+    message.channel.send(embed)
+  }})
+
+  client.on('message', message => {
+    if(message.content.startsWith(`${prefix}공지`)) {
+      try{
+        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(`${message.author.username}님은 명령어를 사용할 권한이 없습니다.`) //메시지 관리권한이 있는 유저만 사용가능
+      let content = message.content.slice('공지 '.length);
+      let img = message.author.displayAvatarURL({dynamic: true})
+      
+      let reason = args.slice(1).join(" ");
+
+      if(!reason) reason = 'Unspecified';
+      
+      let embed = new Discord.MessageEmbed()
+      .setTitle('📌 | 공지사항')
+      .setDescription("@everyone")
+      .addField(`**${reason}**`, `${message.author.tag} 님이 공지를 전송했습니다.`)
+      .setFooter(message.author.tag, img)
+      .setTimestamp()
+      .setColor('RANDOM')    
+      client.channels.cache.get('').send(embed) // 공지가 포함된 embed를 전송함
+      client.channels.cache.get('').send('@everyone') //모두를 멘션함
+      message.reply('메시지가 전송되었습니다.');
+    }catch(err) {
+      message.delete();
+      message.channel.send("오류가 발생했습니다.")
+      }
+    }
+  });
+
+ 
 
 client.on('message', async (message) => {
 

@@ -1,6 +1,6 @@
 module.exports = {
     name: "수학",
-    execute(message) {
+    async run (client, message, args) {
         const numbers = [
             "0️⃣",
             "1️⃣",

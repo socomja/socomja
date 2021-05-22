@@ -3,9 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
 
 name: "디엠",
-    description: "Bans a member from the server.",
-     
-      
+    description: "Bans a member from the server.",  
     async run (client, message, args) {
         setTimeout(()=>{message.delete()},1)
        

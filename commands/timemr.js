@@ -1,56 +1,37 @@
-
-
-
 module.exports = {
-    name: '타이머',
-    minArgs: 1,
-    errormsg: `타이머의 시간을 정해 주세요!
-  시간 포맷 : m = 분, h = 시, d = 날`,
-    callback: async (message, arguments) => {
-      if (!arguments[0].endsWith("d")) {
-        if (!arguments[0].endsWith("h")) {
-          if (!arguments[0].endsWith("m")) {
-            let error = new MessageEmbed()
-            .setTitle('오류 ❌')
-            .setDescription(`알 수 없는 시간 포맷입니다!
-  시간 포맷 : m = 분, h = 시, d = 날`)
-            .setColor('FF0000')
-            return message.channel.send(error);
+  name: "타이머",
+  async run (client, message, args) {
+      const Discord = require('discord.js')
+      const Embed = new Discord.MessageEmbed()
+      if(isNaN(args[0])) {
+          return message.reply(Embed.setColor("RED").addField("오류!",`숫자를 입력해주세요!`))
+      } if (!args[1] || args[1] == "초") {
+          if (args[0] > 43200){
+              return message.reply(Embed.setColor("RED").addField("오류!",`최대 43200초입니다!`))
+          } else {
+              message.reply(Embed.setColor("#00e676").addField("타이머 시작!",`${args[0]}초 후에 멘션해드릴게요!`))
+              setTimeout(function(){
+                  message.channel.send(`<@${message.author.id}> ${args[0]}초 타이머가 종료되었어요!`)
+              }, (args[0] * 1000))
           }
-        }
+      } if (args[1] == "분") {
+          if (args[0] > 720){
+              return message.reply(Embed.setColor("RED").addField("오류!",`최대 720분입니다!`))
+          } else {
+              message.reply(Embed.setColor("#00e676").addField("타이머 시작!",`${args[0]}분 후에 멘션해드릴게요!`))
+              setTimeout(function(){
+                  message.channel.send(`<@${message.author.id}> ${args[0]}분 타이머가 종료되었어요!`)
+              }, (args[0] * 60000))
+          }
+      } if (args[1] == "시간") {
+          if (args[0] > 12){
+              return message.reply(Embed.setColor("RED").addField("오류!",`최대 12시간입니다!`))
+          } else {
+              message.reply(Embed.setColor("#00e676").addField("타이머 시작!",`${args[0]}시간 후에 멘션해드릴게요!`))
+              setTimeout(function(){
+                  message.channel.send(`<@${message.author.id}> ${args[0]}시간 타이머가 종료되었어요!`)
+              }, (args[0] * 3600000))
+          }
       }
-      if (isNaN(arguments[0][0])) {
-        let error2 = new MessageEmbed()
-        .setTitle('오류 ❌')
-        .setDescription(`입력하신 값은 숫자가 아닙니다!`)
-        .setColor('FF0000')
-        return message.channel.send(error2);
-      }
-      Timers.set(message.author.id + " G " + message.guild.name, {
-        Guild: message.guild.name,
-        Author: {
-          Tag: message.author.tag,
-          ID: message.author.id,
-        },
-        Time: ms(arguments[0]),
-      });
-  
-      const set = new MessageEmbed()
-        .setTitle('타이머 설정!')
-        .setDescription(`${arguments[0]} 타이머가 설정되었습니다.`)
-        .setColor('91FFD1')
-        .setTimestamp()
-  
-      message.channel.send(set);
-  
-      setTimeout(() => {
-      const end = new MessageEmbed()
-        .setTitle('타이머 끝!')
-        .setDescription(`${arguments[0]} 타이머가 만료되었습니다.`)
-        .setColor('91FFD1')
-        .setTimestamp()
-        message.author.send(end);
-        Timers.delete(message.author.id + " G " + message.guild.name);
-      }, ms(arguments[0]));
-    }
   }
+}
