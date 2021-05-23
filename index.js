@@ -205,7 +205,7 @@ client.on("message",  message => {if(message.content == `${prefix}인증`) {
     if(message.content.startsWith(`${prefix}공지`)) {
       try{
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(`${message.author.username}님은 명령어를 사용할 권한이 없습니다.`) //메시지 관리권한이 있는 유저만 사용가능
-      let content = message.content.slice('공지 '.length);
+      let content = message.content.slice('공지'.length);
       let img = message.author.displayAvatarURL({dynamic: true})
       
       let reason = args.slice(1).join(" ");

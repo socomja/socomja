@@ -5,7 +5,10 @@ module.exports=  {
     /**
      * @param {Message} message
      */
-    run : async(client, message, args) => {
+     async run (client, message, args) {
+
+        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('당신은 이명령어를 사용할 권한이 없습니다')
+        if(!message.guild.me.hasPermission("ADMINISTRATOR")) return message.channel.send('권한이 없습니다.')
 
         const channel = message.client.channels.cache.get('792963172805246976')
         const Member = message.mentions.members.first() || message.guild.members.cache.get(args[0])
