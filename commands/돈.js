@@ -20,7 +20,7 @@ module.exports = {
 const user = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 const today = new Date();
 const date = "" + today.getFullYear() + today.getMonth() + today.getDate();
-const howMuch = 1000;
+const howMuch = 3000;
 
 
   let saveUser = {};
