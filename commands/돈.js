@@ -13,7 +13,7 @@ module.exports = {
 
 
 
-    const filePath = `./data2/${id}.json`;
+    const filePath = `./data/${id}.json`;
 
  !fs.existsSync(filePath) ? fs.writeFileSync(filePath, JSON.stringify({})) : null; // 파일이 없다면 생성
 

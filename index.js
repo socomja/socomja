@@ -412,10 +412,10 @@ client.on('message', message => {
         const id = message.author.id;
         const name = message.author.username;
         const filePath = `./data/${id}.json`;
-        if (!fs.existsSync(filePath)) return message.reply(`등록되지 않은 유저야! ${prefix}출석 을 입력해봐!`); // data 폴더에 유저정보가 없다면 실행취소
+        if (!fs.existsSync(filePath)) return message.reply(`등록되지 않은 유저야! ${prefix}돈 을 입력해봐!`); // data 폴더에 유저정보가 없다면 실행취소
         const user = JSON.parse(fs.readFileSync(filePath, "utf-8"));
         if (bettingCoins > user.money) return message.reply(`가지고 있는 것보다 많은 코인은 배팅할 수 없어!`); // 배팅한 코인이 가지고있는것보다 많다면 실행취소
-        if (bettingCoins > 300) return message.reply(`한 번에 최대 300코인만 배팅할 수 있어!`); // 최대 300코인 배팅 가능
+        if (bettingCoins > 1000) return message.reply(`한 번에 최대 1000코인만 배팅할 수 있어!`); // 최대 300코인 배팅 가능
         
         const percentage = Math.floor(Math.random() * 100); // 확률을 정하기 위한 변수
         var final_round; // 마지막 라운드가 어디인지 미리 정해야함
@@ -423,7 +423,7 @@ client.on('message', message => {
         var nowReward = bettingCoins; // 현재 보상 변수
         var saveUser = {}; // data 폴더에 유저정보를 저정하기 위한 변수
         var continued = false; // 계속을 하였는지 안하였는지
-        if (percentage < 25) final_round = 5; // 26% 의 확률로 유저는 마지막 라운드까지 도달합니다.
+        if (percentage < 10) final_round = 5; // 26% 의 확률로 유저는 마지막 라운드까지 도달합니다.
         else if (percentage < 30) final_round = 4; // 31% 의 확률로 유저는 4라운드까지 도달합니다.
         else if (percentage < 42) final_round = 3; // 43% 의 확률로 유저는 3라운드까지 도달합니다.
         else if (percentage < 59) final_round = 2; // 60% 의 확률로 유저는 2라운드까지 도달합니다.
@@ -434,12 +434,12 @@ client.on('message', message => {
         roulette = true; // 게임 시작
         if (final_round > 0) { // 시작하자마자 죽지 않았다면
             setTimeout(() => {
-                message.channel.send(`😱 ${name}, 너는 살아남았고, ${Math.floor(bettingCoins * 1.1)}코인을 받았어!`);
-                nowReward = Math.floor(bettingCoins * 1.1); // 현재 보상은 배팅한 코인의 1.1배
-                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + Math.floor(bettingCoins * 1.1), xp: user.xp}; // saveUser 변수에 잔액을 변경
+                message.channel.send(`😱 ${name}, 너는 살아남았고, ${Math.floor(bettingCoins * 1.3)}코인을 받았어!`);
+                nowReward = Math.floor(bettingCoins * 1.3); // 현재 보상은 배팅한 코인의 1.1배
+                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + Math.floor(bettingCoins * 1.3), xp: user.xp}; // saveUser 변수에 잔액을 변경
                 fs.writeFileSync(filePath, JSON.stringify(saveUser)); // data 폴더에 유저정보를 저장
                 setTimeout(() => {
-                    message.channel.send(`${name}, **계속** 을 입력하여 모든 보상을 걸고 다시 도전하여 ${Math.floor(bettingCoins * 1.3)}코인을 받을 수 있어!`);
+                    message.channel.send(`${name}, **계속** 을 입력하여 모든 보상을 걸고 다시 도전하여 ${Math.floor(bettingCoins * 1.5)}코인을 받을 수 있어!`);
                     nowRound = nowRound + 1; // 다음 라운드로 넘어감
                 }, 2000);
             }, 3000);
@@ -465,12 +465,12 @@ client.on('message', message => {
                     setTimeout(() => {
                         if (nowRound == 2) { // 현재 라운드가 2라운드이고,
                             if (final_round > 1) { // 2라운드에서도 살았다면,
-                                message.channel.send(`😱 ${message.author.username}, 너는 살아남았고, ${Math.floor(bettingCoins * 1.3)}코인을 받았어!`);
-                                nowReward = Math.floor(bettingCoins * 1.3); // 배팅한 코인의 1.3배를 주고,
-                                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + bettingCoins * 1.3 - bettingCoins * 1.1, xp: user.xp}; // saveUser 변수에 잔액을 변경
+                                message.channel.send(`😱 ${message.author.username}, 너는 살아남았고, ${Math.floor(bettingCoins * 1.5)}코인을 받았어!`);
+                                nowReward = Math.floor(bettingCoins * 1.5); // 배팅한 코인의 1.3배를 주고,
+                                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + bettingCoins * 1.5 - bettingCoins * 1.5, xp: user.xp}; // saveUser 변수에 잔액을 변경
                                 fs.writeFileSync(filePath, JSON.stringify(saveUser)); // data 폴더에 유저정보를 저장
                                 setTimeout(() => {
-                                    message.channel.send(`${name}, **계속** 을 입력하여 ${nowReward}코인을 걸고 다시 도전하여 ${Math.floor(bettingCoins * 1.8)}코인을 받을 수 있어!`);
+                                    message.channel.send(`${name}, **계속** 을 입력하여 ${nowReward}코인을 걸고 다시 도전하여 ${Math.floor(bettingCoins * 2.0)}코인을 받을 수 있어!`);
                                     continued = false;
                                     nowRound = nowRound + 1;
                                 }, 2000);
@@ -486,9 +486,9 @@ client.on('message', message => {
                         }
                         else if (nowRound == 3) { // 이 밑으로는 다 똑같아서 설명을 적지 않겠습니다.
                             if (final_round > 2) {
-                                message.channel.send(`😱 ${message.author.username}, 너는 살아남았고, ${Math.floor(bettingCoins * 1.8)}코인을 받았어!`);
-                                nowReward = Math.floor(bettingCoins * 1.8);
-                                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + bettingCoins * 1.8 - bettingCoins * 1.3, xp: user.xp};
+                                message.channel.send(`😱 ${message.author.username}, 너는 살아남았고, ${Math.floor(bettingCoins * 2.0)}코인을 받았어!`);
+                                nowReward = Math.floor(bettingCoins * 2.0);
+                                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + bettingCoins * 2.0 - bettingCoins * 2.0, xp: user.xp};
                                 fs.writeFileSync(filePath, JSON.stringify(saveUser));
                                 setTimeout(() => {
                                     message.channel.send(`${name}, **계속** 을 입력하여 ${nowReward}코인을 걸고 다시 도전하여 ${Math.floor(bettingCoins * 2.5)}코인을 받을 수 있어!`);
@@ -509,10 +509,10 @@ client.on('message', message => {
                             if (final_round > 3) {
                                 message.channel.send(`😱 ${message.author.username}, 너는 살아남았고, ${Math.floor(bettingCoins * 2.5)}코인을 받았어!`);
                                 nowReward = Math.floor(bettingCoins * 2.5);
-                                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + bettingCoins * 2.5 - bettingCoins * 1.8, xp: user.xp};
+                                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + bettingCoins * 2.5 - bettingCoins * 2.5, xp: user.xp};
                                 fs.writeFileSync(filePath, JSON.stringify(saveUser));
                                 setTimeout(() => {
-                                    message.channel.send(`${name}, **계속** 을 입력하여 ${nowReward}코인을 걸고 다시 도전하여 ${Math.floor(bettingCoins * 4)}코인을 받을 수 있어!`);
+                                    message.channel.send(`${name}, **계속** 을 입력하여 ${nowReward}코인을 걸고 다시 도전하여 ${Math.floor(bettingCoins * 3.2)}코인을 받을 수 있어!`);
                                     continued = false;
                                     nowRound = nowRound + 1;
                                 }, 2000);
@@ -528,12 +528,12 @@ client.on('message', message => {
                         }
                         else if (nowRound == 5) {
                             if (final_round > 4) {
-                                message.channel.send(`🥳 놀라워 ${message.author.username}, 너는 모든 라운드에서 살아남았고, ${Math.floor(bettingCoins * 4)}코인을 받았어!`);
+                                message.channel.send(`🥳 놀라워 ${message.author.username}, 너는 모든 라운드에서 살아남았고, ${Math.floor(bettingCoins * 6.0)}코인을 받았어!`);
                                 nowReward = Math.floor(bettingCoins * 4);
                                 nowRound = 1;
                                 continued = false;
                                 roulette = false;
-                                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + bettingCoins * 4 - bettingCoins * 2.5, xp: user.xp};
+                                saveUser = {id: user.id, name: user.name, date: user.date, money: user.money + bettingCoins * 6 - bettingCoins * 6.0, xp: user.xp};
                                 fs.writeFileSync(filePath, JSON.stringify(saveUser));
                             }
                             else {
