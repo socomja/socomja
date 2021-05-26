@@ -16,7 +16,7 @@ module.exports = {
         if(!args[0]) return message.channel.send('사용자를 멘션해주세요.');
 
         if(!member) return message.channel.send('해당 사용자를 찾을수 없습니다.');
-        if(!member.bannable) return message.channel.send('해당 사용자는 권한이 너무 높습니다.');
+        
 
         if(member.id === message.author.id) return message.channel.send('자기자신을 아끼세요..!');
 

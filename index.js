@@ -212,14 +212,14 @@ client.on("message",  message => {if(message.content == `${prefix}인증`) {
 
       if(!reason) reason = 'Unspecified';
       
-      let embed = new Discord.MessageEmbed()
+      let asdembed = new Discord.MessageEmbed()
       .setTitle('📌 | 공지사항')
       .setDescription("@everyone")
       .addField(`**${reason}**`, `${message.author.tag} 님이 공지를 전송했습니다.`)
       .setFooter(message.author.tag, img)
       .setTimestamp()
       .setColor('RANDOM')    
-      client.channels.cache.get('').send(embed) // 공지가 포함된 embed를 전송함
+      client.channels.cache.get('').send(asdembed) // 공지가 포함된 embed를 전송함
       client.channels.cache.get('').send('@everyone') //모두를 멘션함
       message.reply('메시지가 전송되었습니다.');
     }catch(err) {

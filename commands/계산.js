@@ -2,9 +2,10 @@ const math = require('mathjs')
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
-    name: "계산",
-  
-  async run (client, message, args) {
+  name : "계산",
+  minArgs: 1,
+  errormsg: `계산하고 싶은 수학식을 입력해 주세요!`,
+  async run (client, message, arguments) {
 
     let resp;
 
@@ -19,7 +20,7 @@ module.exports = {
     }
 
     const embed = new MessageEmbed()
-    .setColor('#2AF598')
+    .setColor('#00e676')
     .setTitle('계산기')
     .addField('수학식', `\`\`\`css\n${arguments.join(' ')}\`\`\``)
     .addField('답', `\`\`\`css\n${resp}\`\`\``)

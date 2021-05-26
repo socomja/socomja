@@ -18,7 +18,7 @@ module.exports = {
 
                 let muterole = await message.guild.roles.create({
                     data : {
-                        name : 'muted',
+                        name : '뮤트',
                         permissions: []
                     }
                 });
