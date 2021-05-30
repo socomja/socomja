@@ -192,42 +192,9 @@ client.on('message', message=>{
     }
 })
 
-client.on("message",  message => {if(message.content == `${prefix}인증`) {
-    message.delete();
-    message.member.roles.add("828879477911191552");
-    let embed = new Discord.MessageEmbed()
-    .setDescription(`${message.author.username}님 인증 완료 되었습니다.`)
-    .setTimestamp()
-    message.channel.send(embed)
-  }})
 
-  client.on('message', message => {
-    if(message.content.startsWith(`${prefix}공지`)) {
-      try{
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(`${message.author.username}님은 명령어를 사용할 권한이 없습니다.`) //메시지 관리권한이 있는 유저만 사용가능
-      let content = message.content.slice('공지'.length);
-      let img = message.author.displayAvatarURL({dynamic: true})
-      
-      let reason = args.slice(1).join(" ");
 
-      if(!reason) reason = 'Unspecified';
-      
-      let asdembed = new Discord.MessageEmbed()
-      .setTitle('📌 | 공지사항')
-      .setDescription("@everyone")
-      .addField(`**${reason}**`, `${message.author.tag} 님이 공지를 전송했습니다.`)
-      .setFooter(message.author.tag, img)
-      .setTimestamp()
-      .setColor('RANDOM')    
-      client.channels.cache.get('').send(asdembed) // 공지가 포함된 embed를 전송함
-      client.channels.cache.get('').send('@everyone') //모두를 멘션함
-      message.reply('메시지가 전송되었습니다.');
-    }catch(err) {
-      message.delete();
-      message.channel.send("오류가 발생했습니다.")
-      }
-    }
-  });
+  
 
  
 
@@ -330,6 +297,12 @@ client.on('message', (message) => {
 client.on('message', (message) => {
     if(message.content === '돈내놔') {
         message.channel.send('저 돈없어요 ㅠㅠ')
+    }
+});
+
+client.on('message', (message) => {
+    if(message.content === '규민이는?') {
+        message.channel.send('디코 화공으로 야동튼 사람이요!')
     }
 });
 
@@ -557,7 +530,7 @@ client.on('message', message => {
                     message.reply(`룰렛 게임이 너무 오래 지속돼서 종료됐어!`)
                 }
             }
-        }, 60000);
+        }, 45000);
     }
 })
 

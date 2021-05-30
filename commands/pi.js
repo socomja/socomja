@@ -1,8 +1,8 @@
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
-  commands: 'pi',
-  callback: async (message, arguments) => {
+  name: 'pi',
+  async run (client, message, arguments) {
     const error = new MessageEmbed()
     .setColor('dc2e44')
 
