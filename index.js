@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { prefix, token,  } = require("./config.json");
+const { prefix, token,} = require("./config.json");
 
 const { readdirSync } = require('fs');
 const { join } = require('path');
@@ -12,6 +12,8 @@ const ytdl = require('ytdl-core');
 const bot = new Discord.Client();
 const pagination = require('discord.js-pagination');
 const { Collection, Client } = require("discord.js");
+const Levels = require('discord-xp');
+Levels.setURL("mongodb://...");
 
 client.commands = new Discord.Collection(); 
 client.queue = new Map();
@@ -24,7 +26,7 @@ client.config = {
     SOUNDCLOUD: process.env.SOUNDCLOUD_CLIENT_ID
   }
 
-
+  
 
 const sleep = (ms) => {return new Promise(resolve=>{setTimeout(resolve,ms)})}
 client.on('ready', async() => {
@@ -534,4 +536,15 @@ client.on('message', message => {
     }
 })
 
+client.on("message", async (message) => {
+    if (!message.guild) return;
+    if (message.author.bot) return;
+    
+    const randomAmountOfXp = Math.floor(Math.random() * 29) + 1; // Min 1, Max 30
+    const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
+    if (hasLeveledUp) {
+      const user = await Levels.fetch(message.author.id, message.guild.id);
+      message.channel.send(`${message.author}, congratulations! You have leveled up to **${user.level}**. :tada:`);
+    }
+  });
 client.login(token);

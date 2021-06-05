@@ -10,7 +10,7 @@ module.exports = {
     name : '이미지',
     async run (client, message, args) {
         const query = args.join(" ")
-        if(!query) return message.channel.send('Please enter a search query')
+        if(!query) return message.channel.send('제목을 입력해주세요~')
 
         const results = await google.scrape(query, 1)
         message.channel.send(results[0].url);
