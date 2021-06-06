@@ -6,9 +6,9 @@ const fetch = require("node-fetch")
 
 module.exports =  {
   name: "테스트",
-  category: "info",
+  
   description: "Get the information about any anime",
-  usage: "anime <name>",
+  
   run: async (client, message, args) => {
     //checking args
    if (!args[0]) {

@@ -2,8 +2,8 @@ const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
 var ytpl = require("ytpl");
-const sendError = require("../../util/error");
-const { play } = require("../../util/playing");
+const sendError = require("../util/error");
+const { play } = require("../util/playing");
 module.exports = {
     
         name: "재생목록",

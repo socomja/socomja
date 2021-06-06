@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
-const sendError = require("../../util/error");
-const {prefix} = require('../../config.json')
+const sendError = require("../util/error");
+const {prefix} = require('../config.json')
 
 module.exports = {
   

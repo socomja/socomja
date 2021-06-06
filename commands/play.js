@@ -1,8 +1,8 @@
-const { play } = require("../../util/playing");
+const { play } = require("../util/playing");
 const { Util, MessageEmbed } = require("discord.js");
 const ytdl = require("ytdl-core");
 const yts = require("yt-search");
-const sendError = require("../../util/error");
+const sendError = require("../util/error");
 const scdl = require("soundcloud-downloader").default;
 module.exports = {
     
@@ -76,7 +76,7 @@ module.exports = {
                     views: String(songInfo.views).padStart(10, " "),
                     url: songInfo.url,
                     ago: songInfo.ago,
-                    duration: songInfo.duration.toString(),
+                    duration: songInfo.durationFormatted,
                     img: songInfo.image,
                     req: message.author,
                 };
@@ -89,13 +89,13 @@ module.exports = {
         if (serverQueue) {
             serverQueue.songs.push(song);
             let thing = new MessageEmbed()
-                .setAuthor("대기열에 추가되었습니다~", "https://cdn.discordapp.com/attachments/524157791707987976/843691418904297492/Music.gif")
+                .setTitle("대기열에 추가 돼었습니다~:notes:")
                 .setThumbnail(song.img)
-                .setColor("#76ff03")
+                .setColor("#1de9b6")
                 .setDescription(`[${song.title}](${song.url})`,true)
                 .addField("재생시간", song.duration, true)
-                .addField("곡 추가 한사람", song.req.tag, true)
-                .setFooter(`업로드 날짜:  ${song.views} |${song.ago}`);
+                .addField("업로드 날짜", song.ago , true)
+                .setFooter(message.author.tag,message.author.displayAvatarURL())
             return message.channel.send(thing);
         }
 
