@@ -7,6 +7,8 @@ module.exports = {
         /**
          * @param {Message} message
          */
+         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('당신은 이명령어를 사용할 권한이 없습니다')
+         if(!message.guild.me.hasPermission("ADMINISTRATOR")) return message.channel.send('권한이 없습니다.')
        
         //next we define some variables
         const target = message.mentions.members.first() //member = mentions
