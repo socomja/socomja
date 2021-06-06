@@ -6,10 +6,9 @@ const sendError = require("../util/error");
 const { play } = require("../util/playing");
 module.exports = {
     
-        name: "재생목록",
-        description: "To play songs :D",
-        usage: "<YouTube Playlist URL | Playlist Name>",
-        aliases: ["pl"],
+        name: "playlist",
+        description: "재생목록에 있는 노래들을 재생",
+        
     
 
     run: async function (client, message, args) {
@@ -34,7 +33,7 @@ module.exports = {
                 return message.channel.send({
                     embed: {
                         color: "GREEN",
-                        description: `✅  **|**  Playlist: **\`${videos[0].title}\`** has been added to the queue`,
+                        description: `✅  **|**  재생목록: **\`${videos[0].title}\`** 목록에 추가돼었습니다`,
                     },
                 });
             } catch (error) {
@@ -58,7 +57,7 @@ module.exports = {
                     .setAuthor("재생목록이 대기열에 추가되었습니다~", "https://cdn.discordapp.com/attachments/524157791707987976/843691418904297492/Music.gif")
                     .setThumbnail(songInfo.thumbnail)
                     .setColor("GREEN")
-                    .setDescription(`✅  **|**  Playlist: **\`${songInfo.title}\`** has been added \`${songInfo.videoCount}\` video to the queue`);
+                    .setDescription(`✅  **|**  재생목록: **\`${songInfo.title}\`** 가 추가되었습니다. \`${songInfo.videoCount}\` 대기`);
                 return message.channel.send(thing);
             } catch (error) {
                 return sendError("예기치 않은 오류가 발생했습니다.", message.channel).catch(console.error);
@@ -83,7 +82,7 @@ module.exports = {
                     voiceChannel: channel,
                     connection: null,
                     songs: [],
-                    volume: 80,
+                    volume: 100,
                     playing: true,
                     loop: false,
                 };
@@ -109,7 +108,8 @@ module.exports = {
                     .addField("Name", song.title, true)
                     .addField("Duration", song.duration, true)
                     .addField("Requested by", song.req.tag, true)
-                    .setFooter(`Views: ${song.views} | ${song.ago}`);
+                    .setFooter(message.author.tag,message.author.displayAvatarURL())
+                .setColor("#00e676")
                 return message.channel.send(thing);
             }
             return;
