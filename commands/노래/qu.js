@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
-const sendError = require("../util/error");
-const util = require("../util/pagination");
+const sendError = require("../../util/error");
+const util = require("../../util/pagination");
 
 module.exports = {
     

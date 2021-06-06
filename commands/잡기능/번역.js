@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 const translate = require("@k3rn31p4nic/google-translate-api");
-const config = require('../config.json')
+const config = require('../../config.json')
 
 module.exports = {
     
