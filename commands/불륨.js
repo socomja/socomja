@@ -21,7 +21,7 @@ module.exports = {
     serverQueue.volume = args[0]; 
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);
     const xd = new MessageEmbed()
-    .setDescription(`현재 볼륨: **${args[0]/1}/100**`)
+    .setDescription(`현재 볼륨: **${args[0]/1}/150**`)
     .setAuthor("서버 볼륨 관리자", "https://cdn.discordapp.com/attachments/524157791707987976/843691418904297492/Music.gif")
     .setColor("BLUE")
     return message.channel.send(xd);

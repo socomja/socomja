@@ -23,7 +23,7 @@ module.exports = {
         const embed = new MessageEmbed()
             .setAuthor("서버 노래 대기열입니다.", "https://cdn.discordapp.com/attachments/524157791707987976/843691418904297492/Music.gif")
             .setThumbnail(message.guild.iconURL())
-            .setColor("BLUE")
+            .setColor("#00e676")
             .setDescription(chunked[0])
             .addField("지금 재생중", `[${queue.songs[0].title}](${queue.songs[0].url})`, true)
             .addField("텍스트 채널", queue.textChannel, true)

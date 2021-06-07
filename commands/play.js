@@ -95,7 +95,7 @@ module.exports = {
                 .setDescription(`[${song.title}](${song.url})`,true)
                 .addField("재생시간", song.duration, true)
                 .addField("업로드 날짜", song.ago , true)
-                .setFooter(message.author.tag,message.author.displayAvatarURL())
+                .setFooter(song.req.tag,song.req.displayAvatarURL())
             return message.channel.send(thing);
         }
 

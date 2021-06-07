@@ -6,7 +6,7 @@ const sendError = require("../util/error");
 const { play } = require("../util/playing");
 module.exports = {
     
-        name: "playlist",
+        name: "재생목록",
         description: "재생목록에 있는 노래들을 재생",
         
     
@@ -30,6 +30,7 @@ module.exports = {
                     // eslint-disable-line no-await-in-loop
                     await handleVideo(video, message, channel, true); // eslint-disable-line no-await-in-loop
                 }
+                setTimeout(()=>{message.delete()},1)
                 return message.channel.send({
                     embed: {
                         color: "GREEN",
