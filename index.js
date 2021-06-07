@@ -15,7 +15,8 @@ const { Collection, Client } = require("discord.js");
 const Levels = require('discord-xp');
 const discordButtons = require("discord-buttons-plugin");
 const buttonClient = new discordButtons(client)
-
+const disbut = require('discord-buttons')(client);
+const klunch = require('k-lunch')
 
 client.commands = new Discord.Collection(); 
 client.queue = new Map();
@@ -310,14 +311,7 @@ client.on('message', (message) => {
     }
 });
 
-client.on('messageUpdate', async(oldMessage, newMessage) => {
-    if(oldMessage.content === newMessage.content) return 
-    oldMessage.channel.send(
-        embed = new Discord.MessageEmbed()
-       .setDescription(`<@!${oldMessage.author.id}> 님이 \`${oldMessage.content}\` 를 \`${newMessage.content}\` 로 수정했어요~!`)
-       .setColor('#ffff00')
-       )
-})
+
 
 client.on('message', (message) => {
     if(message.content === '루카루카') {
@@ -586,5 +580,8 @@ buttonClient.on("no", (inta) => {
 	inta.message.delete()
 	inta.message.reply("ㅗㅗ")
 })
+
+
+
 
 client.login(token);
