@@ -13,6 +13,8 @@ const bot = new Discord.Client();
 const pagination = require('discord.js-pagination');
 const { Collection, Client } = require("discord.js");
 const Levels = require('discord-xp');
+const discordButtons = require("discord-buttons-plugin");
+const buttonClient = new discordButtons(client)
 
 
 client.commands = new Discord.Collection(); 
@@ -537,5 +539,52 @@ client.on('message', message => {
 })
 
 
+
+
+
+client.on("message", (message) => {
+	if(message.content === `${prefix}버튼`) {
+	/* Generate a Cute Embed :3 */
+
+    
+
+	 const embed = new Discord.MessageEmbed()
+	 .setDescription("테스트")
+	 .setColor("GREEN");
+ 
+    /* Generate 1st Button with "Yes" lable on it */
+	 const button1 = new buttonClient.MessageButton()
+	 .setLabel("Yes")
+	 .setStyle("green")
+	 .setID("yes")
+
+   /* Generate 2nd Button with "No" label on it */
+	 const button2 = new buttonClient.MessageButton()
+	 .setLabel("No")
+	 .setStyle("red")
+	 .setID("no")
+
+   /* Generate 3rd Link Button */
+   const button3 = new buttonClient.MessageButton()
+   .setLabel("디코섭")
+   .setURL("https://discord.gg/Fky6xjXM8J")
+
+     
+     /* Send Message with button */
+     buttonClient.send(null, { channel: message.channel.id, embed, buttons: [ [button1, button2], [button3] ]})
+ }
+})
+
+
+/* Listen to buttons event with their ID */
+buttonClient.on("yes", (inta) => {
+	inta.message.delete()
+	inta.message.reply("ㅎㅎ")
+})
+
+buttonClient.on("no", (inta) => {
+	inta.message.delete()
+	inta.message.reply("ㅗㅗ")
+})
 
 client.login(token);
