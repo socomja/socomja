@@ -17,9 +17,9 @@ module.exports = {
         let em = new Discord.MessageEmbed()
         .setTitle('번역완료')
         .setDescription('본 번역기는 구글 번역기를 기반으로 제작되었습니다')
-        .setColor('RANDOM')
+        .setColor('#00e676')
         .addField('입력한 내용', text)
-        
+        .setFooter(message.author.tag,message.author.displayAvatarURL())
         .setTimestamp()
         const result = await translate(text, { to:language })
         .then((res) => {

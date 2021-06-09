@@ -19,7 +19,9 @@ module.exports = {
         }
 
         const embed = new Discord.MessageEmbed()
-        .addField(`**${message.author.tag}**님의 메세지`,`**${sentences}**`)
+        .setAuthor(`${message.author.tag}님의 메세지`,message.author.displayAvatarURL())
+        .setDescription(`**${sentences}**`)
+        .setTimestamp()
         .setColor(`${color}`)
 
         message.channel.send(embed)
