@@ -14,7 +14,7 @@ module.exports = {
         if(!query) return message.channel.send('검색항목을 입력해주세요~')
         
         const msg = await message.channel.send('잠시만 기다려주세요~')
-        msg.delete({ timeout: 5000 })
+        msg.delete({ timeout: 7500 })
         setTimeout(()=>{message.delete()},10)
         const results = await google.scrape(query, 1)
         

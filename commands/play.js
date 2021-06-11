@@ -9,7 +9,7 @@ module.exports = {
         name: "재생",
         description: "To play songs :D",
         usage: "<YouTube_URL> | <song_name>",
-        aliases: "p",
+        aliases: ["p"],
     
 
         run: async function (client, message, args) {

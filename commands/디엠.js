@@ -26,11 +26,12 @@ name: "디엠",
         if(!reason) reason = '아무말안함';
 
         const dmembed = new Discord.MessageEmbed()
-        .setTitle("📌디엠도착!")
-        .addField(`${message.author.tag}님에게서 디엠이 도착했습니다`,`**${reason}**`)
-        .setFooter(member.user.username, member.user.displayAvatarURL())
+        .setAuthor(`${message.author.tag}님으로부터 디엠이 도착했습니다📧`,message.author.displayAvatarURL())
+        
+        .setDescription(`**${reason}**`)
+        
         .setTimestamp()
-        .setColor('#1de9b6')
+        .setColor('#00e676')
         member.send(dmembed)
         message.channel.send("전송완료!")
       
