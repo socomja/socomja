@@ -31,7 +31,7 @@ module.exports = {
                 .addField('확진자', confirmed)
                 .addField('치료됨', recovered)
                 .addField('사망', deaths)
-
+                .setColor("#00e676")
                 message.channel.send(embed)
             })
         } else {
@@ -47,7 +47,7 @@ module.exports = {
                 .addField('확진자', confirmed)
                 .addField('격리해제', recovered)
                 .addField('사망자', deaths)
-
+                .setColor("#00e676")
                 message.channel.send(embed)
             }).catch(e => {
                 return message.channel.send('나라가 검색되지 않습니다')
