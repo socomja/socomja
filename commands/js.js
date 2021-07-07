@@ -1,7 +1,7 @@
 
 
 module.exports = {
-  name : "구글",
+  name : "구글검색",
   description : ":flushed:",
 
   async run(client , message , args ) {

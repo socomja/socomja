@@ -29,7 +29,7 @@ module.exports = {
         if(!member) return message.channel.send('이 유저는 킥할 수 없습니다');
         if(!member.kickable) return message.channel.send('이 유저는 킥할 수 없습니다');
 
-        if(member.id === message.author.id) return message.channel.send('자살은 안돼!');
+        if(member.id === message.author.id) return message.channel.send('자기 자신은 킥할수 없다!!');
 
         let reason = args.slice(1).join(" ");
 

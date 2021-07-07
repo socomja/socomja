@@ -3,7 +3,7 @@ const sendError = require("../util/error");
 
 module.exports = {
     
-        name: "나가",
+        name: "스탑",
         aliases: ["goaway", "disconnect"],
         description: "Leave The Voice Channel!",
         usage: "Leave",

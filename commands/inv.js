@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   
-    name: "초대",
+    name: "봇초대",
     description: "To add/invite the bot to your server",
     usage: "[invite]",
     aliases: ["inv"],

@@ -17,7 +17,7 @@ module.exports = {
 
         if(!channel) return message.channel.send(
             new Discord.MessageEmbed()
-            .setDescription("You must be connected to a voice channel to use this command.")
+            .setDescription("먼저 음성채널에 들어와 주세요")
             .setColor("#ff0000")
         )
 
@@ -38,10 +38,10 @@ module.exports = {
         }).then(res => res.json()).then(invite => {
             if(!invite.code) return message.channel.send(
                 new Discord.MessageEmbed()
-                .setDescription("I was unable to start a yt together session.")
+                .setDescription("실행할수없네요.")
                 .setColor("#ff0000")
             )
-            message.channel.send(`Click This Link To Start a YouTube Together Session\nhttps://discord.com/invite/${invite.code}`)
+            message.channel.send(`시작하려면 이 링크를 클릭하십시오.\nhttps://discord.com/invite/${invite.code}`)
         })
     }
 }
