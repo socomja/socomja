@@ -25,7 +25,8 @@ module.exports = {
                 message.guild.channels.cache.filter(c => c.type === 'text').forEach(async (channel, id) => {
                     await channel.createOverwrite(muterole, {
                         SEND_MESSAGES: false,
-                        ADD_REACTIONS: false
+                        ADD_REACTIONS: false,
+                        Color: Red 
                     })
                 });
                 message.channel.send('해당 뮤트 역할이 만들어졌습니다.')

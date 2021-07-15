@@ -8,7 +8,8 @@ module.exports = {
     
     message.member.roles.add("828879477911191552");
     let embed = new Discord.MessageEmbed()
-    .setDescription(`:white_check_mark: 인증 완료 되었습니다.`)
+    
+    .setAuthor("인증 완료 되었습니다.","https://cdn.discordapp.com/attachments/827820848547233804/864679287146414110/850432197113544735.gif")
     .setTimestamp()
     .setFooter(`${message.author.tag}`, message.author.displayAvatarURL())
     .setColor("#00e676")
