@@ -357,14 +357,20 @@ client.on('message', (message) => {
             .setDescription('<@!477448050982518784>님 그사람 스토킹하니까 재밌나요?')
             .setColor('RANDOM')
             )
-
-            message.reply(
+                message.reply(
+                    embed = new Discord.MessageEmbed()
+                    .setTitle("")
+                    .setDescription(`'너무 좋아서 입에 달고 산다고 들었는는데...'`)
+                    .setColor('RANDOM')
+                    ) 
+                   
+                   
+             message.reply(
                 embed = new Discord.MessageEmbed()
                 .setTitle("")
                 .setDescription('<@!477448050982518784>님 ```박지율```좀 그만 좋아하세요 ㅋㅋㅋ')
                 .setColor('RANDOM')
                 )
-
 }});
 
 
