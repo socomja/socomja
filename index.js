@@ -34,15 +34,15 @@ client.config = {
 const sleep = (ms) => {return new Promise(resolve=>{setTimeout(resolve,ms)})}
 client.on('ready', async() => {
     while(1) {
-      client.user.setActivity("제작자ㅣ자서#8302")
+      client.user.setActivity("제작자:자서#8302")
       await sleep(4000)
-      client.user.setActivity("디스코드ㅣEHbhnz5B4P")
+      client.user.setActivity("디코섭:EHbhnz5B4P")
       await sleep(4000)
-      client.user.setActivity("%도움말")
+      client.user.setActivity("/도움말")
+      await sleep(4000)
+      client.user.setActivity("문의는 봇에게 디엠 해주세용~")
       await sleep(4000)
       client.user.setActivity("[AD]뮤직봇도 많이 이용해주세요~")
-      await sleep(4000)
-      client.user.setActivity("문의는 봇에게 디엠 해주세요")
       await sleep(4000)
     } 
   })
@@ -244,7 +244,7 @@ client.on('message', (message) => {
         message.channel.send(
             embed = new Discord.MessageEmbed()
             .setTitle('뱅드림 Pastel Pallets의 보컬')
-            .addField("본명","마루야마 아야")
+            .addField("풀네임","마루야마 아야")
             .setImage('https://cdn.discordapp.com/attachments/825982538040082442/843654710870409216/Screenshot_20210504-190351.jpg')
             .setColor('#1de9b6')
         )}
@@ -305,18 +305,14 @@ client.on('message', (message) => {
     }
 });
 
-client.on('message', (message) => {
-    if(message.content === '규민이는?') {
-        message.channel.send('디코 화공으로 야동튼 사람이요!')
-    }
-});
+
 
 
 
 client.on('message', (message) => {
     if(message.content === '루카루카') {
         message.reply(embed = new Discord.MessageEmbed()
-        .setDescription('[루카★루카 나이트피버~](https://youtu.be/lT_cJxZpMZU)')
+        .setDescription('[루카★루카 나이트피버~](https://youtu.be/A0ny-2atcaY)')
         .setImage("https://cdn.discordapp.com/attachments/826790237766156299/833320924899573770/Screenshot_20210418-213845.jpg")
         .setColor('#f50057')
         )}
@@ -351,21 +347,21 @@ client.on('message', (message) => {
         message.reply(
             embed = new Discord.MessageEmbed()
             .setTitle("")
-            .setDescription('아 그 <@!477448050982518784>님이 매일 스토킹하는 애요?(얼마나 좋아하길레 스토킹을;;)')
+            .setDescription('아 그 <@!477448050982518784>님이 매일 스토킹하는 애요?')
             .setColor('RANDOM')
             )
 
         message.reply(
             embed = new Discord.MessageEmbed()
             .setTitle("")
-            .setDescription('<@!477448050982518784>님 그래서 고백은 언제 하실껀가용?(차일것같지만요...)')
+            .setDescription('<@!477448050982518784>님 그사람 스토킹하니까 재밌나요?')
             .setColor('RANDOM')
             )
 
             message.reply(
                 embed = new Discord.MessageEmbed()
                 .setTitle("")
-                .setDescription('<@!477448050982518784>님 만약 "박지율"이 고백하면 받으실껀가용? ㅋㅋㅋ ')
+                .setDescription('<@!477448050982518784>님 ```박지율```좀 그만 좋아하세요 ㅋㅋㅋ')
                 .setColor('RANDOM')
                 )
 
