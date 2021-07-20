@@ -38,7 +38,7 @@ client.on('ready', async() => {
       await sleep(4000)
       client.user.setActivity("디코섭:EHbhnz5B4P")
       await sleep(4000)
-      client.user.setActivity("/도움말")
+      client.user.setActivity("%도움말")
       await sleep(4000)
       client.user.setActivity("문의는 봇에게 디엠 해주세용~")
       await sleep(4000)
