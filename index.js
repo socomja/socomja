@@ -80,8 +80,74 @@ fs.readdir(__dirname + "/events/", (err, files) => {
   });
 
  
+  client.on('ready', () => {
+    console.log('ready');
 
-client.on('message', (message) => { 
+  client.api.applications(client.user.id).commands.post({
+    data: {
+        name: "테스트",
+        description: "Replies with Hello World!"
+    }
+});
+
+client.api.applications(client.user.id).commands.post({
+    data: {
+        name: "echo",
+        description: "Echos your text as an embed!",
+
+        options: [
+            {
+                name: "content",
+                description: "Content of the embed",
+                type: 3,
+                required: true
+            }
+        ]
+    }
+});
+
+client.ws.on('INTERACTION_CREATE', async interaction => {
+    const command = interaction.data.name.toLowerCase();
+    const args = interaction.data.options;
+
+    if(command == '테스트') {
+        client.api.interactions(interaction.id, interaction.token).callback.post({
+            data: {
+                type: 4,
+                data: {
+                    content: "테스트!"
+                }
+            }
+        });
+    }
+
+    if(command == "echo") {
+        const description = args.find(arg => arg.name.toLowerCase() == "content").value;
+        const embed = new discord.MessageEmbed()
+            .setTitle("Echo!")
+            .setDescription(description)
+            .setAuthor(interaction.member.user.username);
+
+        client.api.interactions(interaction.id, interaction.token).callback.post({
+            data: {
+                type: 4,
+                data: await createAPIMessage(interaction, embed)
+            }
+        });
+    }
+});
+
+
+async function createAPIMessage(interaction, content) {
+const apiMessage = await discord.APIMessage.create(client.channels.resolve(interaction.channel_id), content)
+    .resolveData()
+    .resolveFiles();
+
+return { ...apiMessage.data, files: apiMessage.files };
+}
+  });
+
+  client.on('message', (message) => { 
     if(message.content === `${prefix}핑`) {
     const timeTaken = Date.now() - message.createdTimestamp; 
     message.channel.send(`봇의 핑은 ${Math.round(client.ws.ping)}ms`) 
@@ -240,7 +306,7 @@ client.on('guildMemberAdd', member => {   //guildMemberRemove
 
 
 client.on('message', (message) => {
-    if(message.content === '아야') {
+    if(message.content === '%아야') {
         message.channel.send(
             embed = new Discord.MessageEmbed()
             .setTitle('뱅드림 Pastel Pallets의 보컬')

@@ -8,10 +8,13 @@ module.exports = {
     
         name: "재생",
         description: "To play songs :D",
-        usage: "<YouTube_URL> | <song_name>",
-        aliases: ["p"],
+        usage: "[song]",
+    permissions: {
+        channel: ["VIEW_CHANNEL", "SEND_MESSAGES", "EMBED_LINKS"],
+        member: [],
+    },
+    aliases: ["p"],
     
-
         run: async function (client, message, args) {
         
             let channel = message.member.voice.channel;
@@ -122,4 +125,19 @@ module.exports = {
             return sendError(`음성채널에 들어갈수 없네요: ${error}`, message.channel);
         }
     },
+
+
+
+
+SlashCommand: {
+    options: [
+        {
+            name: "song",
+            value: "song",
+            type: 3,
+            required: true,
+            description: "Play music in the voice channel",
+        },
+    ],
+},
 };
