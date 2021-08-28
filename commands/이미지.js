@@ -20,9 +20,15 @@ module.exports = {
         
         
              Imageembad = new Discord.MessageEmbed()
-            .setTitle(query)
+            .setTitle(`검색항목:${query}`)
             .setImage(results[0].url)
+             .setDescription(`[더 많은 항목을 보고싶다면?](https://www.google.com/search?q=${query}&sxsrf=AOaemvKKlC98Vij2zNN4eCD4Lu6WQCm_Gw:1630156438802&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi2ztn75dPyAhWPD94KHTlFCeYQ_AUoAXoECAEQAw&biw=1870&bih=927)`)
             .setColor("#00e676")
-        message.channel.send(Imageembad)    
+            .setFooter(`${message.author.tag}`, message.author.displayAvatarURL())
+            
+                
+                
+                message.channel.send(Imageembad)    
+                
     }
 }

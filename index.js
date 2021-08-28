@@ -86,7 +86,7 @@ fs.readdir(__dirname + "/events/", (err, files) => {
   client.api.applications(client.user.id).commands.post({
     data: {
         name: "테스트",
-        description: "Replies with Hello World!"
+        description: "테스트용!"
     }
 });
 
