@@ -7,7 +7,7 @@ module.exports = {
   async run (client, message, args) {
      const embed = new Discord.MessageEmbed()
          .setTitle(`${message.author.username} blushes...`)
-        .setImage(await anime.kill())
+        .setImage(await anime.smile())
         .setColor('#03fcf8')
    message.channel.send(embed)
 }
