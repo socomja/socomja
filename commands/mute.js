@@ -35,9 +35,9 @@ module.exports = {
             }
         };
         let role2 = message.guild.roles.cache.find(r => r.name.toLowerCase() === '뮤트')
-        if(Member.roles.cache.has(role2.id)) return message.channel.send(`${Member.displayName} 님이 뮤트 돼었어요..!`)
+        if(Member.roles.cache.has(role2.id)) return message.channel.send(`${Member.displayName} 님이 뮤트 되었어요..!`)
         await Member.roles.add(role2)
-        message.channel.send(`${Member.displayName} 님이 뮤트 돼었어요...!`)
+        message.channel.send(`${Member.displayName} 님이 뮤트 되었어요...!`)
         
         let reason = args.slice(1).join(" ");
 

@@ -1,7 +1,7 @@
 const { Message } = require('discord.js')
 
 module.exports = {
-    name : '역할',
+    name : '역할부여',
     run : async(client, message, args) => {
         
         /**
